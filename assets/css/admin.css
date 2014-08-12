@@ -1,0 +1,33 @@
+*,html,body {
+	padding:0;
+	margin:0;
+}
+.clear {
+	clear:both;
+}
+#form1 {
+	width:400px;
+	margin:0 auto;
+}
+header {
+	background:black;
+}
+header p {
+	color:white;
+}
+header #fv {
+	float:left;
+}
+header #menu {
+	float:right;
+}
+#modal {
+	display:none;
+	width:300px;
+	height:100%;
+	position: fixed;
+	top:0;
+	left:0;
+	background:grey;
+	z-index:9999;
+}

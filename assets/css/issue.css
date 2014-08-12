@@ -1,0 +1,12 @@
+#issue_content {
+	width:80%;
+	margin:0 auto;
+}
+#left_issue{
+	float:left;
+	width:50%;
+}
+#right_issue{
+	float:right;
+	width:50%;
+}

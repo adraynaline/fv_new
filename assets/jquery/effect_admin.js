@@ -1,0 +1,27 @@
+$('#menu').on('click',function(){
+  		$('#modal').slideToggle();
+  	});
+		$('#second_step_modele').slideToggle();
+		$('#next_step').on('click',function(){
+			$('#first_step_modele').slideToggle();
+			$('#second_step_modele').slideToggle();
+		});
+		$('#previous_step').on('click',function(){
+			$('#first_step_modele').slideToggle();
+			$('#second_step_modele').slideToggle();
+		});
+$('#beaute_inactif').hide();
+$('#beaute_actif').show();
+$('#actif').on('click',function(){
+	$('#beaute_actif').hide();
+	$('#beaute_inactif').show();
+});	
+$('#inactif').on('click',function(){
+	$('#beaute_actif').show();
+	$('#beaute_inactif').hide();
+});	 
+$('#closeerrorcoming').on('click',function(){
+	$('#error').fadeOut();
+});
+$('.item').first().addClass('active'); 
+$('.item2').first().addClass('active'); 

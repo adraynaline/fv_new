@@ -1,0 +1,152 @@
+*,body,html{
+	padding:0;
+	margin:0;
+}
+body {
+	width:100%;
+	height:100%;
+}
+#subscribe {
+	background:black;
+	width:100%;
+	height:58px;
+}
+#subscribe p {
+	text-align: center;
+	color:white;
+	text-transform: uppercase;
+	font-size: 18px;
+	font-weight: 300px;
+}
+
+.container {
+	max-width:1170px;
+	width:100%;
+	margin:0 auto;
+}
+header {
+	max-width:1170px;
+	width:100%;
+	max-height:320px;
+	height:100%;
+}
+#header_left {
+	float:left;
+}
+#header_right {
+	float:right;
+}
+#logo_header {
+	width:209px;
+	min-width:100%;
+	max-height:310px;
+	height:100%;
+	
+}
+
+#issue_header {
+	float:left;
+	max-width:209px;
+	width:100%;
+	max-height:310px;
+	height:100%;
+	
+}
+#header_mobil #subscribe {
+	height:80px;
+}
+#header_mobil nav ul li:last-child{
+	padding-right:10px;
+	
+}
+#header_mobil nav ul li a{
+font-size: 40px;
+}
+nav ul {
+	margin-top: 15px;
+	float: right;
+}
+nav ul li {
+
+	display: inline;
+	text-decoration: none;
+}
+nav ul li a {
+	font-size: 18px;
+	color:black;
+	text-decoration: none;
+}
+nav ul li {
+	padding-right:30px;
+}
+nav ul li:last-child {
+	padding-right: 110px;
+	padding-left:40px;
+}
+#content{
+	max-width:1170px;
+	width:100%;
+	margin: 0 auto;
+}
+#slider {
+
+	max-width:1170px;
+	width:100%;
+	margin-top:25px;
+
+}
+#editor_obsession {
+	max-width:1170px;
+	width:100%;
+}
+.bloc {
+	max-width:353px;
+	width:100%;
+	float:left;
+	margin-left:40px;
+}
+.bloc:first-child {
+	margin-left:0px;
+}
+#blocs {
+	margin-top:50px;
+}
+.img_bloc {
+	width:100%;
+	height:353px;
+	background:black;
+}
+.description_bloc {
+	margin-top:15px;
+}
+.description_bloc p{
+	font-size: 18px;
+	text-align: center;
+}	
+.carousel-caption {
+	background:rgba(0,0,0,0.6);
+}
+#modal ul li {
+	list-style: none;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+#modal ul li a{
+	color:black;
+}
+#blocs_mobil {
+	margin-top:50px;
+}
+.bloc_mobil {
+	max-width:353px;
+	width:100%;
+	margin:0 auto;
+}
+.bloc_mobil:first-child {
+	margin-left:0px;
+}
+.img_bloc_mobil {
+	width:100%;
+	height:353px;
+	background:black;
+}

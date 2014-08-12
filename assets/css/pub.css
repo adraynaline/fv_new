@@ -1,0 +1,12 @@
+#advert_content {
+	width:80%;
+	margin:0 auto;
+}
+#left_pub{
+	float:left;
+	width:50%;
+}
+#right_pub{
+	float:right;
+	width:50%;
+}
