@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>FV Administration</title>
+	<title></title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="assets/css/<?php echo PAGE_CSS ?>.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/admin.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-theme.css">
-	<link rel="stylesheet" href="assets/css/tinyeditor.css">
-  <script src="assets/js/tiny.editor.packed.js"></script>
+	<link rel="stylesheet" type="text/css" href="<? echo base_url();?>assets/css/<?php echo PAGE_CSS ?>.css">
+	<link rel="stylesheet" type="text/css" href="<? echo base_url();?>assets/css/admin.css">
+	<link rel="stylesheet" type="text/css" href="<? echo base_url();?>assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<? echo base_url();?>assets/css/bootstrap-theme.css">
+	<link rel="stylesheet" href="<? echo base_url();?>assets/css/tinyeditor.css">
+  <script src="<? echo base_url();?>assets/js/tiny.editor.packed.js"></script>
 
 </head>
 <body>
@@ -24,7 +24,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="home">Administration</a>
+          <a class="navbar-brand" href="<?php echo base_url(); ?>home">Administration</a>
         </div>
         <div class="collapse navbar-collapse bs-example-js-navbar-collapse">
           <ul class="nav navbar-nav">
@@ -38,10 +38,13 @@
               </ul>
             </li>
             <li class="dropdown">
-              <a href="article" id="drop2" role="button" >Article</b></a>
+              <a href="<?php echo base_url(); ?>article" id="drop2" role="button" >Article</b></a>
             </li>
              <li class="dropdown">
-              <a href="user" id="drop2" role="button" >User</b></a>
+              <a href="<?php echo base_url(); ?>user" id="drop2" role="button" >User</b></a>
+            </li>
+            <li class="dropdown">
+              <a href="<?php echo base_url(); ?>upload" id="drop2" role="button" >Upload</b></a>
             </li>
             
           </ul>
@@ -53,7 +56,7 @@
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="home/logout">Logout</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url(); ?>home/logout">Logout</a></li>
               </ul>
             </li>
           </ul>
@@ -70,6 +73,12 @@
     <?php
       } 
     ?>
-	
+	<?php 
+if ($this->session->flashdata('result') != ''): 
+  echo '<p id="mr">';
+    echo $this->session->flashdata('result'); 
+    echo '</p>';
+endif;
+ ?>
 
 

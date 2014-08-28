@@ -1,27 +1,78 @@
 <!-- SCRIPT GENERAL -->
-<script src="assets/jquery/jquery.min.js"></script>
-<script src="assets/jquery/jquery.liteuploader.min.js"></script>
-<script src="assets/jquery/upload_img.js"></script>
-<script src="assets/jquery/jquery.form.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/jquery/jquery.pageslide.min.js"></script>
+<script src="<? echo base_url();?>assets/jquery/jquery.min.js"></script>
+<script src="<? echo base_url();?>assets/jquery/jquery.liteuploader.min.js"></script>
+<script src="<? echo base_url();?>assets/jquery/upload_img.js"></script>
+<script src="<? echo base_url();?>assets/jquery/jquery.form.min.js"></script>
+<script src="<? echo base_url();?>assets/js/bootstrap.min.js"></script>
+<script src="<? echo base_url();?>assets/jquery/jquery.pageslide.min.js"></script>
 
 <!-- SCRIPT ARTICLE -->
-<script src="assets/ajax/add_article.js"></script>
-<script src="assets/ajax/add_complementary_info.js"></script>
-<script src="assets/ajax/update_article.js"></script>
-<script src="assets/ajax/add.delete.product.js"></script>
-<script src="assets/ajax/add_content_article.js"></script>
-<script src="assets/ajax/delete_article.js"></script>
-<script src="assets/ajax/activate.desactivate.img.js"></script>
+<script src="<? echo base_url();?>assets/ajax/add_article.js"></script>
+<script src="<? echo base_url();?>assets/ajax/add_complementary_info.js"></script>
+<script src="<? echo base_url();?>assets/ajax/update_article.js"></script>
+<script src="<? echo base_url();?>assets/ajax/add.delete.product.js"></script>
+<script src="<? echo base_url();?>assets/ajax/add_content_article.js"></script>
+
+<script src="<? echo base_url();?>assets/ajax/activate.desactivate.img.js"></script>
 <!-- SCRIPT HOME -->
-<script src="assets/ajax/add_issue.js"></script>
-<script src="assets/ajax/add_pub.js"></script>
-<script src="assets/ajax/change_pub.js"></script>
-<script src="assets/ajax/delete_homeslider.js"></script>
-<script type="text/javascript" src="assets/jquery/effect_admin.js"></script>
+<script src="<? echo base_url();?>assets/ajax/add_issue.js"></script>
+<script src="<? echo base_url();?>assets/ajax/add_pub.js"></script>
+<script src="<? echo base_url();?>assets/ajax/change_pub.js"></script>
+<script src="<? echo base_url();?>assets/ajax/delete_homeslider.js"></script>
+<script src="<?php echo base_url()?>assets/js/ajaxfileupload.js"></script>
+
+  <script type="text/javascript">
+$(function() {
+    $('#upload_file').submit(function(e) {
+        e.preventDefault();
+        $.ajaxFileUpload({
+            url             :'./upload/upload_file/', 
+            secureuri       :false,
+            fileElementId   :'userfile',
+            dataType        : 'json',
+            data            : {
+                'title'             : $('#title').val(),
+                'description'       : $('#description').val(),
+                'filter'            : $('#filter').val(),
+                'forh'              : $('#forh').val()
+            },
+            success : function (data, status)
+            {
+                if(data.status != 'error')
+                {
+                    $('#files').html('<p>Reloading files...</p>');
+                    refresh_files();
+                    $('#title').val('');
+                    $('#description').val('');
+                    $('#forh').val();
+                    $('#filter').val();
+                }
+                alert(data.msg);
+            }
+        });
+        return false;
+    });
+$.get('./article').success(function (data){
+       $('#files').empty();
+        $('#files').html(data);
+    });
+});
+function refresh_files()
+{
+    $.get('./article/')
+    .success(function (data){
+       $('#files').empty();
+        $('#files').html(data);
+    });
+}
+    </script>
 
 <script type="text/javascript">
+$(document).ready(function() {
+    setTimeout(function() {
+        $('#mr').hide(); // or, to add a nice fadeOut effect: $('.myclassname').fadeOut(500);
+    }, 3000);
+}); 
 
 $(document).ready(function() { 
 	var options = { 
@@ -39,7 +90,7 @@ $(document).ready(function() {
 }); 
 
 </script>
-<?php if($this->router->fetch_class() == 'beauty') { ?>
+<?php if($this->router->fetch_class() == 'article') { ?>
 <script>
 function afterSuccess()
 {

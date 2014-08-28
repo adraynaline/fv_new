@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $('#formUpdateBeaute').on('submit', function(){
         var title = $('#title').val();
+        var redirect = $('#redirect').val();
         //var description = $('#description');
     if(title == "" ){
         alert('Empty Field');
@@ -13,7 +14,7 @@ $(document).ready(function(){
                 success: function(json) {
                     if(json.reponse == 'ok') { 
                         alert('Beauty article update');
-                        window.setTimeout("location=('?appli=article');");
+                        window.setTimeout("location=('"+redirect+"');");
                     } else {
                         alert('Erreur : '+ json.reponse);
                     }

@@ -31,3 +31,21 @@ header #menu {
 	background:grey;
 	z-index:9999;
 }
+#content {
+	margin : 0 auto;
+	width:80%;
+}
+#mr {
+	z-index:999999;
+	position:absolute;
+	top:30;
+	padding-top:10px;
+	right:10px;
+	width:230px;
+	height:50px;
+	background:green;
+	color:white;
+	border-radius: 20px;
+	text-align:center;
+	font-size:20px;
+}

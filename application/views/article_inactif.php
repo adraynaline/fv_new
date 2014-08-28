@@ -20,6 +20,7 @@
 	      </div>
 	      
 	      <div class="modal-body">
+	        
 	      	<?php  
         $attributes = array('class' => 'form-horizontal','id' =>'upload_file');
         echo form_open('',$attributes); ?>
@@ -96,6 +97,7 @@
 	       		 </div>
 	      </div>
 	     
+	     
 	    </div>
 	  </div>
 	 
@@ -104,57 +106,85 @@
 	<!-- FIN MODAL -->
 
 	<br><br>
-	<center><button   class="btn btn-primary"><a href="<?php echo base_url(); ?>article/actif">Actif</a></button>    <button class="btn btn-default"><a href="<?php echo base_url(); ?>article/">Inactif</a></button></center><br>
-	<div id="beaute_actif">
+	<center><button class="btn btn-primary"><a href="<?php echo base_url(); ?>article/actif">Actif</a></button>    <button class="btn btn-default"><a href="<?php echo base_url(); ?>article/">Inactif</a></button></center><br>
+	<?php
+if (isset($files) && count($files))
+{
+    ?>
+        <ul>
+            <?php
+            foreach ($files as $file)
+            {
+                ?>
+                <li class="image_wrap">
+                    <a href="#" class="delete_file_link" data-file_id="<?php echo $file->id?>">Delete</a>
+                    <strong><?php echo $file->title?></strong>
+                    <br />
+                    <img src="<?php echo $file->img?>">
+                </li>
+                <?php
+            }
+            ?>
+        </ul>
+    </form>
+    <?php
+}
+else
+{
+    ?>
+    <p>No Files Uploaded</p>
+    <?php
+}
+?>
+	<div id="beaute_inactif">
 		<div class="table-responsive">
 		  <table class="table">
 		    <tr>
 		    	<td>Id</td>
 		    	<td>Img</td>
-		    	<td>Titre</td>
+		    	<td>Title</td>
 		    	<td>Description</td>
 		    	<td>For</td>
 		    	<td>Filter</td>
+		    	<td>Date Create</td>
+		    	<td>Date Update</td>
 		    	<td>Show</td>
 		    	<td>Delete</td>
 		    	<td>Update</td>
 		    	<td>Visibility</td>
-		    	<td>Add Product</td>
-		    	<td>Add specific article</td>
 		    </tr>
-		    <?php foreach($article1 as $a): ?>
+		    <?php foreach($article2 as $ar): ?>
 			    <tr>
-			    	<td><?php echo $a->id; ?></td>
-			    	<td><img width="200px" src="<?php echo $a->img; ?>"></td>
-			    	<td><a href="?appli=beauty&action=show&id=<?php echo $a->id; ?>"><?php echo $a->title; ?></a></td>
-			    	<td><?php echo $a->description; ?></td>
-			    	<td><?php echo $a->forh; ?></td>
-			    	<td><?php echo $a->filter; ?></td>
+			    	<td><?php echo $ar->id; ?></td>
+			    	<td><img width="200px" src="<?php echo $ar->img; ?>"></td>
+			    	<td><a href="article/show/<?php echo $ar->id; ?>"><?php echo $ar->title; ?></a></td>
+			    	<td><?php echo $ar->description; ?></td>
+			    	<td><?php echo $ar->forh; ?></td>
+			    	<td><?php echo $ar->filter; ?></td>
+			    	<td><?php echo $ar->date_crea; ?></td>
+			    	<td><?php echo $ar->date_update; ?></td>
 			    	<td>
-			    		<button class="btn"><a href="<?php echo base_url(); ?>article/show/<?php echo $a->id; ?>">Show</a></button>
+			    		<button class="btn"><a href="<?php echo base_url(); ?>article/show/<?php echo $ar->id; ?>">Show</a></button>
 			    	</td>
 			    	<td>
 			    		<button class="btn btn-default">
           <?php 
-            echo anchor('article/delete/'.$a->id, 'Delete', array('onClick' => "return confirm('Are you sure you want to delete?')"));
+            echo anchor('article/delete/'.$ar->id, 'Delete', array('onClick' => "return confirm('Are you sure you want to delete?')"));
           ?>
           </button>
 			    	</td>
-			    	<td><button class="btn"><a href="?appli=article&action=update&id=<?php echo $a->id; ?>">Update</a></button></td>
-			    	<td>
-			    		<form method="post" action="?appli=article&action=desactivate.img" id="formImgDesactivate">
-			    			<input type="hidden" id="type" value="<?php echo $a->filter; ?>">
-			    			<input type="hidden" id="id" name="id" value="<?php echo $a->id; ?>">
-			    			<button class="btn btn-default" type="submit">Desactivate</button>
+			    	<td><button class="btn"><a href="?appli=article&action=update&id=<?php echo $ar->id; ?>">Update</a></button></td>
+		    		<td>
+		    			<form method="post" action="?appli=article&action=activate.img" id="formImgActivate">
+		    				<input type="hidden" id="type" value="<?php echo $ar->filter; ?>">
+			    			<input type="hidden" id="id" name="id" value="<?php echo $ar->id; ?>">
+			    			<button class="btn btn-default" type="submit">Activate</button>
 			    		</form>
-			    	</td>
-			    	<td><a href="?appli=article&action=product&id=<?php echo $a->id; ?>">Add Product</a></td>
-			    	<td></td>
+		    		</td>
 			    </tr>
 			<?php endforeach; ?>
 		  </table>
 		</div>
 	</div>
-	
 </div> 
 

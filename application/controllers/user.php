@@ -6,12 +6,24 @@ class User extends CI_Controller {
  function __construct()
  {
    parent::__construct();
+   $this->load->model('User_model');
+  $this->load->library('form_validation');
+  $this->load->library('session');
+
  }
 
  function index()
  {
+  
    if($this->session->userdata('logged_in'))
    {
+    
+    //$this->info['title'] = 'User Management';
+    $this->data['message'] = $this->session->flashdata('message');
+
+//$this->load->view('your_view', $this->data); 
+    //$this->info['message'] = $this->session->flashdata('message');
+    
      $session_data = $this->session->userdata('logged_in');
      $data['username'] = $session_data['username'];
 
@@ -23,7 +35,7 @@ class User extends CI_Controller {
 
      $this->load->view('layout/header',$data);
      $this->load->helper(array('form'));
-     $this->load->view('user',$result);
+     $this->load->view('user',$result, $data);
      $this->load->view('layout/footer');
    }
    else
@@ -34,13 +46,17 @@ class User extends CI_Controller {
    
  }
  function add_user(){
-    $this->load->model('user_model'); 
-    if($this->input->post('username','password')){
-      $this->user_model->add_user('username','password');
+     
+    if($this->input->post('username','password','grade','mail')){
+      $this->User_model->add_user('username','password','grade','mail');
       redirect('user', 'refresh');
     }
  }
-
+ function delete($id) {
+    $this->User_model->delete_user($id);
+    
+    redirect('user');
+  }
  function logout()
  {
    $this->session->unset_userdata('logged_in');
